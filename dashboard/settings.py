@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'ckeditor',
     'ckeditor_uploader',
-    'whitenoise.runserver_nostatic',  
+    'whitenoise.runserver_nostatic', 
+    'import_export' 
    
 ]
 

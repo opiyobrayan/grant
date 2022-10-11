@@ -15,7 +15,8 @@ urlpatterns = [
     path('activity-ongoing',views.ongoing_activities,name='activity-ongoing'),
     path('activity-completed',views.completed_activities,name='activity-completed'),
     path('activity-starting',views.starting_activities,name='activity-starting'),
-    path('starting/<activity_id>',views.activity_countdown,name='activity-countdown')
+    path('starting/<activity_id>',views.activity_countdown,name='activity-countdown'),
+    path('add-participant/',views.simple_upload,name='add-participant')
    
    
 ]

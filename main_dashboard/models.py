@@ -101,6 +101,15 @@ class Activity(models.Model):
         dur_now=int(time_now)-int(self.date_start.strftime("%Y%m%d"))
         return str(dur_now) + "/"+ str(total_dur)
 
+class Participant(models.Model):
+    name=models.CharField('Name',max_length=200)
+    phone=models.CharField('Phone',max_length=200)
+    part_id=models.CharField('id',max_length=200)
+    organization=models.CharField('organization',max_length=200)
+    activity_id=models.CharField('activity_identity',max_length=200)
+
+    def __str__(self):
+        return self.name
     
         
 

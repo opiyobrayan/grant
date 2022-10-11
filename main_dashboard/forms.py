@@ -7,3 +7,10 @@ class CreateProjectForm(forms.ModelForm):
         fields='__all__'
 
 
+
+from .models import Participant
+
+class PersonData(forms.Form):
+	class meta:
+		model = Participant
+		fields = '__all__'

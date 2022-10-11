@@ -7,6 +7,12 @@ from . forms import CreateProjectForm
 import plotly.express as px
 import plotly.graph_objects as go
 
+from django.http import HttpResponse
+from .resources import ParticipantResource
+from tablib import Dataset
+from .models import Participant
+from django.contrib import messages
+
 from datetime import date
 
 today = date.today()
@@ -290,3 +296,32 @@ def home(request):
 
 
    
+def export(request):
+    person_resource = ParticipantResource()
+    dataset = person_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="persons.xls"'
+    return response
+
+def simple_upload(request):
+    if request.method == 'POST':
+        person_resource = ParticipantResource()
+        dataset = Dataset()
+        new_persons = request.FILES['myfile']
+
+        if not new_persons.name.endswith('xlsx'):
+            messages.info(request,'wrong Format, kindly Check again')
+            return render(request,'participant/input.html')
+
+        imported_data = dataset.load(new_persons.read(),format='xlsx')
+        #print(imported_data)
+        for data in imported_data:
+            value = Participant(data[0],data[1],data[2],data[3],data[4],data[5])
+            value.save()       
+        
+        # result = person_resource.import_data(dataset, dry_run=True)  # Test the data import
+
+        # if not result.has_errors():
+        #    person_resource.import_data(dataset, dry_run=False)  # Actually import now
+
+    return render(request, 'participant/input.html')
