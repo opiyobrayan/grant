@@ -258,8 +258,8 @@ def participant_detail():
     fig = px.bar(dummy_data, x='Organization', y='Number')
     fig.update_layout(height=240,title='Organization Reached')
     graph_org=fig.to_html(full_html=False)
-
-    def home(request):
+    
+def home(request):
     graph_grants()
     graph_all_activities()
     participant_detail()
