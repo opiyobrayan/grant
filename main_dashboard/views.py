@@ -35,34 +35,7 @@ def comp(col):
     else:
         return col
 # Create your views here.def \
-def home(request):
-    graph_grants()
-    graph_all_activities()
-    participant_detail()
-    
 
-    # date for this month
-    today = date.today()
-    d2 = today.strftime("%Y-%m")
-
-    global total_grants,total_completed,total_in_progress,total_to_be,graph_trend,graph_activity,graph_org
-    global com_len,ong_len,soon_len,total_activivity
-
-    context={
-        'total_grants':total_grants,
-        'total_completed':total_completed,
-        'total_in_progress':total_in_progress,
-        'total_to_be':total_to_be,
-        'month_year':d2,
-        'graph_activity':graph_activity,
-        'graph_trend':graph_trend,
-        'graph_organization':graph_org,
-        'activity_completed':com_len,
-        'activity_starting_soon':soon_len,
-        'activity_ongoing':ong_len,
-        'total_activity':total_activivity
-    }
-    return render(request,'home.html',context)
 
 def grant( request):
     global df1
@@ -286,6 +259,34 @@ def participant_detail():
     fig.update_layout(height=240,title='Organization Reached')
     graph_org=fig.to_html(full_html=False)
 
+    def home(request):
+    graph_grants()
+    graph_all_activities()
+    participant_detail()
+    
+
+    # date for this month
+    today = date.today()
+    d2 = today.strftime("%Y-%m")
+
+    global total_grants,total_completed,total_in_progress,total_to_be,graph_trend,graph_activity,graph_org
+    global com_len,ong_len,soon_len,total_activivity
+
+    context={
+        'total_grants':total_grants,
+        'total_completed':total_completed,
+        'total_in_progress':total_in_progress,
+        'total_to_be':total_to_be,
+        'month_year':d2,
+        'graph_activity':graph_activity,
+        'graph_trend':graph_trend,
+        'graph_organization':graph_org,
+        'activity_completed':com_len,
+        'activity_starting_soon':soon_len,
+        'activity_ongoing':ong_len,
+        'total_activity':total_activivity
+    }
+    return render(request,'home.html',context)
 
 
    
