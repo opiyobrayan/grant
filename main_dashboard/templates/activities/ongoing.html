@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+      background-image:url("{% static 'back2.jpg' %}");
+      background-repeat:no-repeat;
+      background-size:100%;
+    }
+  
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Create three equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 49%;
+        padding: 10px;
+        height: 260px; /* Should be removed. Only for demonstration */
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+</style>
+<br>
+<body>
+   
+   <div class="row">
+    {% for activity in ongoings %}
+    <div class="column">
+    <div class="card r">
+        <div class="card-header">
+        <h3>{{ activity}}</h3>
+        </div>
+        <div class="card-body">
+        <h5 class="card-title">Thematic: {{activity.thematic}}</h5>
+        <h5 class="card-title">Projecct: {{activity.grant}}</h5>
+        <h5 class="card-title">Thematic: {{activity.thematic}}</h5>
+        <h5 class="card-title">Venue: {{activity.venue}}</h5>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+        <div class="card-footer text-muted">
+        Ongoing : {{activity.save}} left
+        </div>
+    </div>
+   </div>
+   {% endfor %}
+ </div>
+    <br>
+   
+</body>
+  {% endblock %}

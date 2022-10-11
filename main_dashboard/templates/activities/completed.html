@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br>
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Activity</th>
+        <th scope="col">Thematic</th>
+        <th scope="col">Project</th>
+        <th scope="col">date start</th>
+        <th scope="col">date end</th>
+      </tr>
+    </thead>
+    {% for activity in completed %} 
+        <tbody>
+        <tr>
+            <td>{{activity.activity_name}}</td>
+            <td>{{activity.thematic}}</td>
+            <td>{{activity.grant}}</td>
+            <td>{{activity.date_start|date}}</td>
+            <td>{{activity.date_end|date}}</td>
+            <td>download</td>
+          
+        </tr>
+        </tbody>
+    {% endfor %}
+  </table>
+
+  {% endblock %}

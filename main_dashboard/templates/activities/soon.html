@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for act in soons %}
+        <a href="{% url 'activity-countdown' %} act.id">{{act.activity_name}}</a>
+    {% endfor %}
+{% endblock %}

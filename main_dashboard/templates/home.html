@@ -1,7 +1,14 @@
 {% extends 'base.html'  %}
 
 {% block content %}
+{% load static %}
 <style>
+  body{
+    background-image:url("{% static 'back2.jpg' %}");
+    background-repeat:no-repeat;
+    background-size:100%;
+  }
+
     * {
       box-sizing: border-box;
     }
@@ -11,7 +18,7 @@
       float: left;
       width: 33.33%;
       padding: 10px;
-      height: 200px; /* Should be removed. Only for demonstration */
+      height: 260px; /* Should be removed. Only for demonstration */
     }
     
     /* Clear floats after the columns */
@@ -36,56 +43,75 @@
       <div class="column" style="background-color:#aaa;">
       <center>
         <h1> Grants Data</h1>
-       <a href=""><h2>50 Grants</h2> </a>
-       <a href=""><h3>30 completed</h3></a>
-      <a href=""><h3>20 In Progress</h3></a>
+       <a href="{% url 'graph-all' %}"><h2>{{total_grants}} Grants</h2> </a>
+       <a href="{% url 'completed' %}"><h3>{{total_completed}} completed</h3></a>
+       <a href="{% url 'progress' %}"><h3>{{total_in_progress}} In Progress</h3></a>
+       {% if total_to_be >= 1 %}
+          <a href="{% url 'graph-to-be' %}"><h3>{{total_to_be}} ending by <b>{{month_year}}</b></h3></a>
+       {% endif %}
+      
       </center>
       </div>
-      <div class="column" style="background-color:#bbb;">
-        <h2>Column 2</h2>
-        <p>Some text..</p>
+      <div class="column" style="background-color:blue;">
+        {{graph_trend|safe}}
       </div>
       <div class="column" style="background-color:#ccc;">
         <center>
-          <h1> Activity Details</h1>
-         <a href=""><h2>40 Trainings</h2> </a>
-         <a href=""><h3>20 Workshops</h3></a>
-        <a href=""><h3>10 Meetings</h3></a>
+          <h1> {{total_activity }} Activitities</h1>
+         <a href="{% url 'activity-completed' %}"><h3>{{activity_completed}} activities Completed</h3> </a>
+         <a href="{% url 'activity-ongoing' %}"><h3>{{activity_ongoing}} Ongoing activities</h3></a>
+        <a href="{% url 'activity-starting' %}"><h3>{{activity_starting_soon}} activity(s) Starting Soon</h3></a>
         </center>
       </div>
       
     </div>
     <br>
     <div class="row">
-        <div class="column" style="background-color:#aaa;">
-          <h2>Column 1</h2>
-          <p>Some text..</p>
+        <div class="column" style="background-color:blue;">
+          {{graph_activity|safe}}
         </div>
         <div class="column" style="background-color:#bbb;">
+          <center>
           <h2>Organizations</h2>
-          <a href=""><h3>60 cbos</h3> </a>
-          <a href=""><h3>20 Workshops</h3></a>
-          <a href=""><h3>10 Meetings</h3></a>
+          <a href=""><h3># CBOs</h3> </a>
+          <a href=""><h3># NGOs</h3></a>
+          <a href=""><h3># CSOs</h3></a>
+          <a href=""><h3># Laws Firms</h3></a>
+        </center>
         </div>
-        <div class="column" style="background-color:#ccc;">
-          <h2>Column 3</h2>
-          <p>Some text..</p>
+        <div class="column" style="background-color:blue;">
+          {{graph_organization|safe}}
         </div>
-        
+   
     </div>
     <br>
+    
     <div class="row">
-      <div class="column" style="background-color:#aaa;">
-        <h2>Column 1</h2>
-        <p>Some text..</p>
+      <div class="column" style="background-color:white;">
+        <center>
+        <h2>Goups</h2>
+        <a href=""><h3># Women Groups</h3> </a>
+        <a href=""><h3># Youth Groups</h3></a>
+        <center>
       </div>
-      <div class="column" style="background-color:#bbb;">
-        <h2>Column 2</h2>
-        <p>Some text..</p>
+      <div class="column" style="background-color:blueviolet;">
+        <center>
+        <h2>Participant</h2>
+        <a href=""><h3># Elders</h3> </a>
+        <a href=""><h3># Lawyers</h3></a>
+        <a href=""><h2># Judges</h2> </a>
+        <a href=""><h3># Widows</h3></a>
+        <a href=""><h3># Adolescent Ladies</h3></a>
+      </center>
       </div>
       <div class="column" style="background-color:#ccc;">
-        <h2>Column 3</h2>
-        <p>Some text..</p>
+        <center>
+          <h2>Counties</h2>
+          <a href=""><h3># Kisumu</h3> </a>
+          <a href=""><h3># Nairobi</h3></a>
+        </center>
+        
+        
       </div>
       </div>
     

@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{{df|safe}}
 <br>
 <br>
 <table class="table table-success table-striped">
     <thead>
       <tr>
-        <th scope="col">Project Logo</th>
+        <!-- <th scope="col">Project Logo</th> -->
         <th scope="col">Thematic Area</th>
         <th scope="col">Project</th>
         <th scope="col">Donor</th>
-        <th scope="col">Basic Info</th>
-        <th scope="col">Person Responsible</th>
+        <!-- <th scope="col">Basic Info</th> -->
+        <!-- <th scope="col">Person Responsible</th>
         <th scope="col">Project Start</th>
-        <th scope="col">Project End</th>
+        <th scope="col">Project End</th> -->
         
       </tr>
     </thead>
@@ -21,15 +23,15 @@
     <tbody>
       <tr>
          
-        <td><img width='80px' height='50px' src="{{ all.log.url}}"></td>
+        <!-- <td><img width='80px' height='50px' src="{{ all.log.url}}"></td> -->
         <td>{{all.thematic_area}}</td>
         <td>{{all.project_name}}</td>
         <td>{{all.donor}}</td>
-        <td>{{all.info}}</td>
-        <td>{{all.person_responsible}}</td>
-        <td>{{all.project_start}}</td>
-        <td>{{all.project_end}}</td>
-        <td><a href="{% url 'update-grant' all.id %}"><button class=" btn btn-primary">UPDATE</button></a></td>
+        <!-- <td>{{all.info}}</td> -->
+        <!-- <td>{{all.person_responsible}}</td> -->
+        <!-- <td>{{all.project_start}}</td> -->
+        <!-- <td>{{all.project_end}}</td> -->
+        <!-- <td><a href="{% url 'update-grant' all.id %}"><button class=" btn btn-primary">Add Logo and Info</button></a></td> -->
 
       </tr>
     </tbody>

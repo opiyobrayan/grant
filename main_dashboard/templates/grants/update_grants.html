@@ -1,4 +1,4 @@
-{% extends "grants/base.html" %}
+{% extends "grants/basegrant.html" %}
 {% load widget_tweaks %}
 
 {% block title %}update Grants{% endblock %}
@@ -16,30 +16,9 @@
               
                 
                 <div class="panel-body">
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Choose Thematic</label>
-                                {% render_field forms.thematic_area class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter Donor</label>
-                                {% render_field forms.donor class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter Project Name</label>
-                                {% render_field forms.project_name class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
+                    
                     <div class="row">                      
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -56,55 +35,8 @@
                                 {% render_field forms.info class="form-control" rows="4" %}
                             </div>
                         </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter Person Responsible</label>
-                                {% render_field forms.person_responsible class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Choose Frequency</label>
-                                {% render_field forms.frequency class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter Start date</label>
-                                {% render_field forms.project_start class="form-control" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter End Date</label>
-                                {% render_field forms.project_end class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Enter Value</label>
-                                {% render_field forms.value class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="question">Choose Currency</label>
-                                {% render_field forms.currency class="form-control" rows="3" %}
-                            </div>
-                        </div>
-                    </div>
+                    </div>             
+                    
                     <br>  
                     <div class="row">
                         <hr />

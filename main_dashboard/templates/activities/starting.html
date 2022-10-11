@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br>
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Activity</th>
+        <th scope="col">View Detail</th>
+        
+      </tr>
+    </thead>
+    {% for activity in starting %} 
+        <tbody>
+        <tr>
+            <td><a href="{% url 'activity-countdown' activity.id %} ">{{activity.activity_name}}</a></td>
+            <td><a href="{% url 'activity-countdown' activity.id %} ">View details</a></td>
+          
+           
+          
+        </tr>
+        </tbody>
+    {% endfor %}
+  </table>
+
+  {% endblock %}

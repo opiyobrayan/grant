@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<center><h2>{{ total_to_be }} Grant(s) To be completed by {{ month_year}}</h2></center>
+{{graph_to_be|safe}}
+
+{% endblock %}

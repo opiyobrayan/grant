@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  block scripts %}
+    <script src="{% static 'mains.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+        <h5 class="card-title">{{countdown_act}}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">This activity will take place in {{countdown_act.venue}} under {{countdown_act.grant}} Project</p>
+      <div id="event-box">
+        {{countdown_act.date_start|date:'M d, Y H:m:s'}}
+     </div>
+     <div> Time left: </div>
+    <div class="card-footer text-muted">
+        <div id="countdown-box" class=" text-center mt-3 h3">
+            <div class="spinner-border" role="status"></div>
+        </div>
+    </div>
+  </div>
+    
+    
+{% endblock %}

@@ -1,6 +1,11 @@
 from email.policy import default
+from unittest.util import _MAX_LENGTH
 from django.db import models
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.contrib.auth.models import User
+from datetime import date
+from django.urls import reverse
+
 # Create your models here.
 
 class Grant(models.Model):
@@ -29,7 +34,7 @@ class Grant(models.Model):
     donor=models.CharField('Donor',max_length=200,blank=True,null=True)
     project_name=models.CharField('Project Name',max_length=200)
     log=models.ImageField(null=False,blank=False)
-    info=RichTextField(blank=True,null=True)
+    info=RichTextUploadingField(blank=True,null=True)
     # person_responsible=MultiSelectField(PERSON_RESPONSIBLE,max_choices=3,max_length=10)
     person_responsible=models.CharField('Choose Persons',max_length=100 ,default='Jesica')
 
@@ -44,3 +49,60 @@ class Grant(models.Model):
         return self.project_name
 
     
+class Post(models.Model):
+    title=models.CharField('Title',max_length=200)
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    body=RichTextUploadingField(blank=True, null=True)
+    body2=RichTextUploadingField(blank=True, null=True,config_name='special')
+
+    def __str__(self):
+
+        return self.title + ' | '+str(self.author)
+
+class ThematicMember(models.Model):
+    name=models.CharField('Name',max_length=200)
+    position= models.CharField('Position',max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Thematic(models.Model):
+    thematic=models.CharField('Name of Thematic',max_length=200)
+    members=models.ManyToManyField(ThematicMember)  #  extension of table ThematicMember
+
+    
+    def __str__(self):
+        return self.thematic
+          
+class ActivityType(models.Model):
+    activity_type=models.CharField('Activity Type',max_length=200)
+    
+    def __str__(self):
+        return self.activity_type
+
+
+class Activity(models.Model):
+    thematic=models.ForeignKey(Thematic,on_delete=models.CASCADE) 
+    grant=models.ForeignKey(Grant,on_delete=models.CASCADE)            # Extension of class Grant
+    activity_name=models.CharField('Activity Name',max_length=200) 
+    activity_type=models.ForeignKey(ActivityType,on_delete=models.CASCADE) # extension of class Activity_Type
+    venue=models.CharField('Venue',max_length=200)  # Extension of class Locaton
+    activity_id=models.CharField('activity id',max_length=200)
+    date_start=models.DateTimeField()
+    date_end=models.DateTimeField()
+    def __str__(self):
+        return self.activity_name
+
+    def save(self,*args,**kwargs):
+        super().save(*args, **kwargs)
+        today = date.today()
+        time_now = today.strftime("%Y%m%d")
+        total_dur= self.date_end-self.date_start
+        dur_now=int(time_now)-int(self.date_start.strftime("%Y%m%d"))
+        return str(dur_now) + "/"+ str(total_dur)
+
+    
+        
+
+        
