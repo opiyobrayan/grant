@@ -7,15 +7,15 @@
     <thead>
       <tr>
         <th scope="col">Activity</th>
-        <th scope="col">View Detail</th>
+        <th scope="col">Check Countdown</th>
         
       </tr>
     </thead>
     {% for activity in starting %} 
         <tbody>
         <tr>
-            <td><a href="{% url 'activity-countdown' activity.id %} ">{{activity.activity_name}}</a></td>
-            <td><a href="{% url 'activity-countdown' activity.id %} ">View details</a></td>
+            <td>{{activity.activity_name}}</td>
+            <td><a href="{% url 'activity-countdown' activity.id %} ">Check On Count Down Timer</a></td>
           
            
           
