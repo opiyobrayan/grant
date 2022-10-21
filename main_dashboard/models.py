@@ -101,16 +101,42 @@ class Activity(models.Model):
         dur_now=int(time_now)-int(self.date_start.strftime("%Y%m%d"))
         return str(dur_now) + "/"+ str(total_dur)
 
-class Participant(models.Model):
-    name=models.CharField('Name',max_length=200)
-    phone=models.CharField('Phone',max_length=200)
-    part_id=models.CharField('id',max_length=200)
-    organization=models.CharField('organization',max_length=200)
-    activity_id=models.CharField('activity_identity',max_length=200)
 
+class Participant(models.Model):
+    year=models.CharField('Year',max_length=100,blank=True,null=True)
+    month=models.CharField('Month',max_length=100,blank=True,null=True)
+    name=models.CharField('Name',max_length=200)
+    gender=models.CharField('Gender',max_length=100,blank=True,null=True)
+    county=models.CharField('County',max_length=100,blank=True,null=True)
+    subcounty=models.CharField('Subcounty',max_length=100,blank=True,null=True)
+    proffesion=models.CharField('Proffesion',max_length=100,blank=True,null=True)
+    title=models.CharField('Title',max_length=100,blank=True,null=True)
+    organization=models.CharField('Organization',max_length=200,blank=True,null=True)
+    phone=models.CharField('Phone',max_length=100,blank=True,null=True)
+    email=models.EmailField('Email',max_length=100,blank=True,null=True)
+    age=models.CharField('Age',max_length=100,blank=True,null=True)
+    groups=models.CharField('Groups/Stakeholders',max_length=200,blank=True,null=True)
+    thematic=models.CharField('Thematic',max_length=200,blank=True,null=True)
+    donor=models.CharField('Donor/Sponsered',max_length=200,blank=True,null=True)
+    project=models.CharField('Project',max_length=200,blank=True,null=True)
+    activity_name=models.CharField(max_length=200,blank=True,null=True)
+    activity_type=models.CharField(max_length=200,blank=True,null=True)
+    date=models.CharField(max_length=200,blank=True,null=True)
+    start_date=models.CharField(max_length=200,blank=True,null=True)
+    end_date=models.CharField(max_length=200,blank=True,null=True)
+    duration=models.CharField(max_length=200,blank=True,null=True)
+    venue=models.CharField(max_length=200,blank=True,null=True)
+    activity_county=models.CharField(max_length=200,blank=True,null=True)
+    activity_subcounty=models.CharField(max_length=200,blank=True,null=True)
+    organizer=models.CharField(max_length=200,blank=True,null=True)
+    budget=models.CharField(max_length=200,blank=True,null=True)
+    actual=models.CharField(max_length=200,blank=True,null=True)
+   
     def __str__(self):
+
         return self.name
-    
+
+
         
 
         
